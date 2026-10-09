@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Packaged and signed builds (npm run build, web-ext sign)
+web-ext-artifacts/
+*.xpi
+*.zip
+
+# Logs
+npm-debug.log*
+*.log
+
+# Secrets, e.g. addons.mozilla.org API keys for web-ext sign
+.env
+.env.*
+
+# Personal editor and tool settings
+.vscode/
+.idea/
+*.swp
+.claude/settings.local.json
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini

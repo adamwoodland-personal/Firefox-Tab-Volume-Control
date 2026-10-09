@@ -1,0 +1,36 @@
+{
+  "name": "tab-volume-control",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Firefox extension: set the volume of each tab separately.",
+  "license": "MIT",
+  "author": "Adam Woodland",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamwoodland-personal/Firefox-Tab-Volume-Control.git"
+  },
+  "homepage": "https://github.com/adamwoodland-personal/Firefox-Tab-Volume-Control#readme",
+  "type": "module",
+  "scripts": {
+    "lint": "web-ext lint",
+    "test": "node --test --test-concurrency=1 \"tests/*.test.mjs\"",
+    "test:online": "node --test \"tests/*.online.mjs\"",
+    "build": "web-ext build"
+  },
+  "devDependencies": {
+    "puppeteer-core": "25.13.0",
+    "web-ext": "10.7.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "webExt": {
+    "ignoreFiles": [
+      "tests",
+      "package.json",
+      "package-lock.json",
+      ".gitignore",
+      ".gitattributes"
+    ]
+  }
+}

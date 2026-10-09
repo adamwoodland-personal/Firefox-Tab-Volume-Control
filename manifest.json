@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Volume Control",
+  "version": "1.0.0",
+  "description": "Set the volume of each tab separately, from silent up to a 400% boost. Right-click a tab or use the toolbar button.",
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg"
+  },
+  "permissions": ["tabs", "menus", "storage", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "scripts": ["shared.js", "background.js"]
+  },
+  "action": {
+    "default_title": "Tab volume",
+    "default_popup": "popup/popup.html",
+    "default_icon": "icons/toolbar.svg",
+    "default_area": "navbar"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "Alt+Shift+V" },
+      "description": "Show the volume slider for the current tab"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/page.js"],
+      "world": "MAIN",
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "match_origin_as_fallback": true
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tab-volume-control@local",
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  }
+}

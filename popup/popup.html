@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tab volume</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <svg class="sprites" aria-hidden="true">
+    <symbol id="icon-speaker" viewBox="0 0 16 16">
+      <path d="M1.5 6a.5.5 0 0 1 .5-.5h2.5L8 2.4a.35.35 0 0 1 .5.3v10.6a.35.35 0 0 1-.5.3L4.5 10.5H2a.5.5 0 0 1-.5-.5z"/>
+      <path d="M10.5 5.5a3.5 3.5 0 0 1 0 5M12.5 3.5a6.4 6.4 0 0 1 0 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-muted" viewBox="0 0 16 16">
+      <path d="M1.5 6a.5.5 0 0 1 .5-.5h2.5L8 2.4a.35.35 0 0 1 .5.3v10.6a.35.35 0 0 1-.5.3L4.5 10.5H2a.5.5 0 0 1-.5-.5z"/>
+      <path d="m10.5 6 4 4m0-4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <main>
+    <section id="current" class="control">
+      <header class="tab">
+        <span class="favicon-box"><img class="favicon" alt=""></span>
+        <div class="tab-text">
+          <div class="tab-title"></div>
+          <div class="tab-host"></div>
+        </div>
+        <button class="mute" type="button" aria-pressed="false">
+          <svg class="icon-on"><use href="#icon-speaker"/></svg>
+          <svg class="icon-off"><use href="#icon-muted"/></svg>
+        </button>
+      </header>
+
+      <div class="readout-row">
+        <label class="readout">
+          <input class="readout-input" type="text" inputmode="numeric" maxlength="3" aria-label="Volume in percent"><span>%</span>
+        </label>
+        <span class="status"></span>
+      </div>
+
+      <input class="slider" type="range" min="0" max="1000" step="any" aria-label="Tab volume">
+      <div class="scale" aria-hidden="true"><span>0%</span><span>100%</span><span class="scale-max"></span></div>
+
+      <div class="presets" role="group" aria-label="Presets"></div>
+
+      <p class="notice" hidden>Firefox doesn’t let extensions change the volume on this page. You can still mute it.</p>
+    </section>
+
+    <section id="others" hidden>
+      <h2>Other tabs</h2>
+      <ul class="tab-list"></ul>
+    </section>
+
+    <footer class="hint">
+      Tip: right-click any tab and choose <b>Volume</b>.<span class="shortcut"></span>
+    </footer>
+  </main>
+
+  <template id="row-template">
+    <li class="control row">
+      <button class="row-tab" type="button" title="Switch to this tab">
+        <span class="favicon-box"><img class="favicon" alt=""></span>
+        <span class="tab-title"></span>
+      </button>
+      <input class="slider" type="range" min="0" max="1000" step="any">
+      <span class="readout-text"></span>
+      <button class="mute" type="button" aria-pressed="false">
+        <svg class="icon-on"><use href="#icon-speaker"/></svg>
+        <svg class="icon-off"><use href="#icon-muted"/></svg>
+      </button>
+    </li>
+  </template>
+
+  <script src="../shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
