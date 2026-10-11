@@ -29,7 +29,8 @@ yourself (unlisted, so it isn't published on addons.mozilla.org):
 2. Run `npx web-ext sign --channel=unlisted --api-key=<key> --api-secret=<secret>` in this folder.
 3. Open the `.xpi` file it writes to `web-ext-artifacts/` in Firefox.
 
-If you sign it, change the `id` in `manifest.json` to something unique to you first.
+If you fork the project and sign your own copy, give it an add-on ID of your own first
+(`id` in `manifest.json`): IDs are unique across addons.mozilla.org.
 
 Tabs that were already open when you installed the extension get `<audio>`/`<video>`
 control the first time you open the slider or use the menu on them. Web Audio they had

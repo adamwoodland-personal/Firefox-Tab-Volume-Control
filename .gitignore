@@ -5,6 +5,7 @@ node_modules/
 web-ext-artifacts/
 *.xpi
 *.zip
+.amo-upload-uuid
 
 # Logs
 npm-debug.log*
